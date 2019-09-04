@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background: pink;
+      }
+      .box2 {
+        width: 200px;
+        height: 200px;
+        background: yellow;
+        margin-top: 20px;
+        visibility: hidden;
+      }
+
+    </style>
+  </head>
+  <body>
+   
+    <div class="container">
+        <div>表單選擇器</div>
+      <input type="text">
+      <button>search</button>
+      <div>--------------------------------------------</div>
+      <input type="checkbox"><span>yes</span>
+      <input type="checkbox" checked id="click"><label for="click">no</label>
+      <div>--------------------------------------------</div>
+      <div>basic-filter</div>
+      <div class="container">
+          <table class="table table-bordered">
+            <tr>
+              <td></td>
+              <td></td>
+              <td>Jason</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Jason</td>
+              <td class="not"></td>
+              <td></td>
+              <td><p></p></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="not"></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Jason</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><p></p></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+      </table>
+
+      <div>--------------------------------------------</div>
+      <div>Visible</div>
+      <div class="box1"></div>
+      <div class="box2"></div>
+
+
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+    $(":button").css("background", "pink");
+    $("input").css("background", "lightblue");
+    // $(":checkbox ~ span").css("background", "lightblue");
+    $(":checked ~ span").css("background", "lightblue");
+
+    // $("td").css("background", "lightblue");
+    //單雙數格子去改色
+    // $("td:even").css("background", "lightpink");
+    // $("td:odd").css("background", "green");
+    
+    // $("td:not(.not)").css("background", "lightblue");
+    
+    //再被選擇的內容加樣式
+    // $("td:contains('Jason')").css("background", "pink");
+    
+    //當td裡面沒有其他屬性時
+    $("td:empty").css("background", "pink");
+
+    //當td屬性內有p的時候
+    $("td:has(p)").css("background", "lightblue");
+
+
+    $(".box1:visible").css("background", "lightblue");
+    // $("box:hidden").css("background", "lightblue");
+    // $("box:hidden").show();
+    //同個class可用在同一行
+    $(".box2:hidden").show().css("background", "red");
+
+    //Filtering
+    $('td').first().css("background", "red");
+    $('td').eq(4).css("background", "red");
+    // $('td').not("p").css("background", "green");
+
+    
+    </script>
+  </body>
+</html>
