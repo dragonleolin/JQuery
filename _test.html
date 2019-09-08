@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>test</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="page">
+        <h1 class="header">List</h1>
+        <h2>Buy groceries</h2>
+        <ul>
+            <li class="hot" id="one"><em>fresh</em>figs</li>
+            <li class="hot" id="two">pine nuts</li>
+            <li class="hot" id="three">honey</li>
+            <li class="hot" id="four">balsamic binegar</li>
+        </ul>
+
+        <div id="newItemButton">
+            <button href="#" id="showForm">new item</button>
+        </div>
+            <form action="" id="newItemForm">
+                <input type="text" id="itemDescription" placeholder="Add descript">
+                <input type="submit" id="addButton" value="add">
+            </form>
+    </div>
+    <p id="footer">&copy; Listking</p>
+    <div id="slideAd">Buy listKing Pro for</div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            var $list, $newItemForm, $newItemButton
+            var item = ''
+            $list = $('ul')
+            $newItemForm = $('#newItemForm')
+            $newItemButton = $('#newItemButton')
+
+            $('li').hide().each(function(index){
+                $(this).delay(450 * index).fadeIn(1600)
+            })
+            function updateCount(){
+                var items = $('li[class!=complete]').length
+                $('#counter').text(items)
+            }
+            updateCount()
+
+            $newItemButton.show()
+            $newItemForm.hide()
+            $('#showForm').on('click',function(){
+                $newItemButton.hide()
+                $newItemForm.show()
+            })
+
+            $('#newItemForm').on('submit', function(e){
+                e.preventDefault()
+                var newText = $('input:text').val()
+                $list.append('<li>'+newText+'</li>')
+                $('input:text').val('')
+                updateCount()
+            })
+
+            $list.on('click', 'li', function(){
+                var $this= $(this)
+                var complete = $this.hasClass('complete')
+                if(complete === true){
+                    $this.animate({
+                        opacity: 0.0,
+                        paddingLeft: '+= 180'
+                    }, 500, 'swing', function(){
+                        $this.remove()
+                    })
+                }else{
+                    item = $this.text()
+                    $this.remove()
+                    $(this).addend('<li class=\"complete\">'+item+'</li>')
+                    .hide().fadeIn(300)
+                    updateCount()
+                }
+            })
+        })
+
+
+        // $(function(){
+        //     var $window = $(window)
+        //     var $slideAd = $('#slideAd')
+        //     var endZone = $('#footer').offset().top - $window.height()-500
+
+        //     $window.on('scroll', function(){
+        //         if((endZone) < $window.scrollTop()){
+        //             $slideAd.animate({ 'right' : '0px'}, 250)
+        //         }else{
+        //             $slideAd.stop(true).animate({ 'right' : '-360px'}, 250)
+        //         }
+        //     })
+        //  })
+
+        // $(function(){
+        //     var listHeight = $('#page').height()
+        //     $('ul').append('<p>Height:' + listHeight + '</p>')
+        //     $('li').width('50%')
+        //     $('li#one').width('125')
+        //     $('li#two').width('75%')
+        // })
+
+
+        // $(function(){
+        //     var $p = $('p')
+        //     var $cloneQuote = $p.clone()
+        //     $p.remove()
+        //     $cloneQuote.insertAfter('h2')
+        //     var $moveItem = $('#one').detach()
+        //     $moveItem.appendTo('ul')
+        // })
+
+
+        // //記事本功能
+        // $(function(){
+        //     $('#newItemButton').show();
+        //     $('#newItemForm').hide()
+        //     $('#showForm').click(function(){
+        //         $('#newItemButton').hide();
+        //         $('#newItemForm').show()
+        //     })
+        //     $('#newItemForm').on('submit', function(e){
+        //         e.preventDefault()
+        //         var newText = $('input:text').val()
+        //         $('li:first').before('<li>'+newText+'</li>')
+        //         $('#newItemForm').hide()
+        //         $('#newItemButton').show();
+        //         $('input:text').val('')
+        //     })
+        // })
+
+        // $(function(){
+        //     $('li:lt(2)').removeClass('hot')
+        //     $('li').eq(0).addClass('.complete')
+        //     $('li:gt(2)').addClass('cool')
+
+        //     console.log($('li'));
+        // })
+
+
+        // $(function(){
+        //     var $listItems = $('li')
+        //     $listItems.filter('.hot:last').removeClass('hot')
+        //     $('li:not(.hot)').addClass('cool')
+        //     $listItems.has('em').addClass('complete')
+
+        //     $listItems.each(function(){
+        //         var $this = $(this)
+        //         if($this.is('.hot')) {
+        //             $this.prepend('Priority item:')
+        //         }
+        //     })
+        //     $('li:contains("honey")').append('(local)')
+        // })
+
+        // $(function(){
+        //     var $h2 = $('h2')
+        //     $('u1').hide()
+        //     $h2.append('<br><a>show</a>')
+        //     $h2.click( function() {
+        //         $h2.next()
+        //             .fadeIn(500)
+        //             .children('.hot')
+        //             .addClass('compete')
+        //         $h2.find('a').fadeOut()
+        //     })
+        // })
+
+
+        // $(function(){
+        //     $('li').on('click', function(){
+        //         $(this).animate({
+        //             opacity: 0.0,
+        //             paddingLeft: '+=80'
+        //         }, 500,function(){
+        //             $(this).remove();
+        //         })
+        //     })
+        // })
+
+
+        // $(function(){
+        //     var $test = $('h2').hide().slideDown();
+        //     var $li = $('li')
+        //     $li.hide().each(function(index){
+        //         $(this).delay(700* index).fadeIn(700)
+        //     })
+        //     $li.on('click', function(){
+        //         $(this).fadeOut(700)
+        //     })
+        // })
+
+
+        // //看不出效果
+        // $(function(){
+        //     var listItem, itemStatus, eventType
+
+        //     $('ul').on(
+        //         'click mouseover',
+        //         ':not(#four)',
+        //         {status: 'important'},
+        //         function(e) {
+        //             listItem = 'Iten:' + e.target.textContent + '</br>'
+        //             itemStatus = 'Status:' + e.data.status +'<br>'
+        //             eventType = 'Event:' + e.type
+        //             $('#notes').html(listItem+itemStatus+eventType)
+        //         }
+        //     )
+        // })
+
+        // $(function(){
+        //     $('li').on('click', function(e){
+        //         $('li span').remove()
+        //         var date = new Date()
+        //         date.setTime(e.timeStamp)
+        //         var clicked = date.toDateString()
+        //         $(this).append('<span class="date">' + clicked + ' ' + e.type + '</span>')
+        //     })
+        // })
+
+        // $(function(){
+        //     var ids = ''
+        //     var $listItems = $('li')
+
+        //     $listItems.on('mouseover click', function(){
+        //         ids = this.ids
+        //         $listItems.children('span').remove()
+        //         $(this).append('<span class="priority">' + ids +'</span>')
+        //         $listItems.on('mouseout', function(){
+        //             $(this).children('span').remove()
+        //         })
+        //     })
+        // })
+
+        // $(function() {
+        //     $('li').each(function(){
+        //         var ids = this.id
+        //         console.log(ids);
+        //         $(this).append('<spaan class="order">' + ids +'</span>')
+                
+        //     })
+        // })
+
+        // $(function () {
+        //     var background = $('li').css('background-color')
+        //     console.log(background);
+            
+        //     $('ul').append('<p>Color was: ' + background + '</p>')
+        //     $('li').css({
+        //         'background-color': '#c5a996',
+        //         'border': '1px solid blue',
+        //         'color' : 'red',
+        //         'padding-left': '+=75',
+        //     })
+        // })
+
+
+        // $(function(){
+        //     $('li#three').removeClass('hot')
+        //     $('li.hot').addClass('favorite')
+        //     $('ul').attr('id', 'group')
+        //     console.log( $('ul').attr('id', 'group'));
+
+        // })
+
+        // $(':header').addClass('headline');
+        // // $('li:lt(3)').hide().fadeIn(1500);
+        // // $('li[id!="one"]').hide().delay(500).fadeIn(1000);
+        // console.log($('ul').html());
+
+        // $('li').on('click', function() {
+        //     $(this).remove()
+        // })
+
+        // $(function(){
+        //     $('li:contains("pine")').text('almonds')
+        //     $('li.hot').html(function(){
+        //     return '<em>' + $(this).text() + '</em>'
+        //     })
+
+        //     $('li#one').remove();
+        // })
+
+        // $(function(){
+        //     $('ul').before('<p class="notice">Justupdate</p>')
+        //     $('li.hot').prepend('+ ')
+        //     var $newListItem = $('<li><em>gluten-free</em> soyAuxw</li>')
+        //     $('li:last').after($newListItem)
+        //     })
+
+    </script>
+</body>
+
+</html>

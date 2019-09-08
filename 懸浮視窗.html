@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>accordion</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .modal {
+            position: absolute;
+            z-index: 1000;
+        }
+        #share-options{
+            width: 500px;
+            height: 500px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="share-options">
+        <!-- 訊息和分享按鈕顯示的位置 -->
+        <!-- <div class="modal-content">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut, doloribus doloremque. Dolorem dicta impedit
+            laudantium expedita corrupti beatae saepe fuga adipisci a magni quas corporis voluptatum suscipit at odit,
+            explicabo ipsum? Nulla corrupti quo porro voluptatem veritatis hic numquam consectetur, in nemo magni
+            dignissimos possimus, quas eum impedit quod tenetur soluta velit earum voluptates reiciendis? Sunt adipisci
+            repellat laboriosam? Repudiandae quae tempore, quia fuga commodi ducimus dolore aliquam praesentium. Totam
+            labore error laboriosam delectus molestias velit culpa voluptate, voluptatum nihil suscipit. Beatae porro,
+            quia molestias non earum minima placeat iusto nam facere facilis odio ipsam incidunt tempora amet ab iure.
+            Cupiditate atque eveniet quis culpa ipsam eum eaque tempora voluptatum quod omnis provident, hic, illum
+            cumque autem quidem! Aliquid, iure in. Quia magnam vero cumque accusamus assumenda deleniti doloremque
+            necessitatibus porro tempore quae deserunt numquam doloribus quod consequatur possimus quaerat, tenetur
+            exercitationem voluptatum aliquid? Nam eveniet eius sed saepe optio veniam iure dolorem assumenda? Incidunt
+            ducimus obcaecati expedita deserunt vero ipsam repellendus nam minima vel. Modi quam sed mollitia nobis ad
+            distinctio possimus quas nisi similique consectetur. Perferendis magnam officiis, nihil magni aliquid facere
+            alias quod voluptatibus nulla maxime quibusdam reiciendis vitae voluptate ipsam eum laborum tempora error
+            recusandae sunt!
+        </div>
+        <button role="button" class="modal-close">close</button> -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var modal = (function () {
+            var $window = $(window)
+            var $modal = $('<div class="modal"/>')
+            var $content = $('<div class="modal-content/>')
+            var $close = $('<button role="button" class="modal-close">close</button>')
+
+            $modal.append($content, $close)
+            $close.on('click', function () {
+                e.preventDefault()
+                modal.close()
+            })
+
+            return {
+                center: function () {
+                    var top = Math.max($window.height() - $modal.outerHeight(), 0) / 2
+                    var left = Math.max($window.width() - $modal.outerWidth(), 0) / 2
+                    $modal.css({
+                        top: top + $window.scrollTop(),
+                        left: left + $window.scrollLeft()
+                    })
+                },
+
+                open: function () {
+                    $content.empty().append(settings.content)
+                    $modal.css({
+                        width: settings.width || 'auto',
+                        height: settings.height || 'auto'
+                    }).appendTo('body')
+
+                    modal.center()
+                    $(window).on('resize', modal.center)
+                },
+
+                close: function () {
+                    $content.empty()
+                    $modal.detach()
+                    $(window).off('resize', modal.center)
+                }
+            }
+
+        }())
+    </script>
+    <script>
+            (function () {
+                var $content = $('#share-options').detach();
+
+                $('#share').on('click', function () {
+                    modal.open({
+                        content: $content,
+                        width: 340,
+                        height: 300
+                    })
+                });
+            }())
+
+    </script>
+</body>
+
+</html>
