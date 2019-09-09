@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>pigeon</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .tab-panel{
+            display: none;
+        }
+        .tab-panel.active{
+            display: block;
+        }
+    
+    </style>
+  </head>
+  <body>
+     <ul class="tab-list">
+         <li class="active"><a class="tab-control" href="#tab-1">Description</a></li>
+         <li ><a class="tab-control" href="#tab-2">Ingredients</a></li>
+         <li ><a class="tab-control" href="#tab-3">Delivery</a></li>
+     </ul> 
+     <div class="tab-panel active" id="tab-1">Content 1...</div>
+     <div class="tab-panel" id="tab-2">Content 2...</div>
+     <div class="tab-panel" id="tab-3">Content 3...</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $('.tab-list').each(function(){
+            var $this = $(this)
+            var $tab = $this.find('li.active')
+            var $link = $tab.find('a')
+            var $panel = $($link.attr('href'))
+
+            $this.on('click', '.tab-control', function(e){
+                e.preventDefault()
+                var $link = $(this)
+                var id = this.hash
+
+                if( id && !$link.is('.active')){
+                    $panel.removeClass('active')
+                    $tab.removeClass('active')
+
+                    $panel = $(id).addClass('active')
+                    $tab = $link.parent().addClass('active')
+                }
+            })
+        })
+    
+    </script>
+  </body>
+</html>
