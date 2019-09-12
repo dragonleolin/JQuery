@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>html</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center" id="getContent">Hello <span class="text-danger"> jQuery</span></h1>
+        <div class="py-2">
+            <button id="getText" type="button" class="btn btn-primary">get</button>
+            <button id="gethtml" type="button" class="btn btn-secondary">html</button>
+            <button id="getTetHtml" type="button" class="btn btn-primary">txtHtml</button>
+        </div>
+        <h1 id="setContent"></h1>
+        <div class="py-2">
+            <button type="button" id="attr" class="btn btn-primary">attr</button>
+        </div>
+        <a href="https://www.google.com" id="link" title="google">google</a>
+        <h2>prop</h2>
+        <div class="py-2">
+            <input type="checkbox" id="checkbox">
+            <button type="button" id="checkBtn" class="btn btn-primary">check</button>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script>
+        //text只取出文字
+        $('#getText').click(function () {
+            let getContent = $('#getContent').text();
+            // console.log(getContent);
+            $('#setContent').text(getContent)
+        })
+        //html會連樣式都顯示出來
+        $('#gethtml').click(function () {
+            let getContent = $('#getContent').html();
+            // console.log(getContent);
+            $('#setContent').html(getContent)
+        })
+        $('#getTetHtml').click(function () {
+            let getContent = $('#getContent').html();
+            // console.log(getContent);
+            $('#setContent').text(getContent)
+        })
+        $('#attr').click(function(){
+            let link = $('#link').attr("href")
+            console.log(link);
+            let newUrl = "https://www.yahoo.com.tw"
+            $('#link').attr({
+                "href": newUrl,
+                "title": "yahoo"
+            }).text("yahoo")
+        })
+
+        $("#checkbox").click(function(){
+            let checked = $(this).prop("checked")
+            console.log(checked);
+            
+            })
+
+            $('#checkBtn').click(function(){
+                $('#checkbox').prop("checked", !$('#checkbox').prop('checked'))
+            })
+
+    </script>
+</body>
+
+</html>
